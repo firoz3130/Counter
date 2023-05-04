@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.coroutines.delay
+import kotlin.concurrent.schedule
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +31,12 @@ class MainActivity : AppCompatActivity() {
         stopCounter=findViewById(R.id.btn_stop)
         stopCounter.setOnClickListener {
             timer.cancel()
-            startCounter.isEnabled=true
+            countervalue=0
+            Timer().schedule(1000)
+            {
+                counterValue.text=(countervalue).toString()
+            }
+startCounter.isEnabled=true
         }
     }
     inner class MyCounter(milliisInFuture:Long,countDownInterval:Long):
